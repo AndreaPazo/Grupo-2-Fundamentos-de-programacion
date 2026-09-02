@@ -1,0 +1,12 @@
+# Pedimos los datos al usuario. input() siempre devuelve texto,
+# por eso usamos float() para convertirlo a número decimal.
+base = float(input("Ingresa la base del rectángulo: "))
+altura = float(input("Ingresa la altura del rectángulo: "))
+
+# Aplicamos las fórmulas
+area = base * altura
+perimetro = 2 * (base + altura)
+
+# Mostramos resultado. :.2f muestra 2 decimales.
+print(f"Área: {area:.2f}")
+print(f"Perímetro: {perimetro:.2f}")
