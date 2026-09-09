@@ -1,0 +1,23 @@
+# Definición de la función con 2 parámetros
+def calcular_descuento(precio, porcentaje):
+    # Calculamos el monto del descuento
+    monto_descuento = precio * (porcentaje / 100)
+    # Restamos el descuento al precio original
+    precio_final = precio - monto_descuento
+    # Retornamos el precio final
+    return precio_final
+
+# --- PRUEBA Y EJECUCIÓN DEL EJERCICIO 1 ---
+precio_original = 100.0
+porcentaje_desc = 20.0
+
+# Llamada a la función
+precio_con_descuento = calcular_descuento(precio_original, porcentaje_desc)
+
+# Cálculo del ahorro obtenido
+ahorro = precio_original - precio_con_descuento
+
+# Impresión de resultados
+print(f"Precio original: S/ {precio_original:.2f}")
+print(f"Precio final con descuento: S/ {precio_con_descuento:.2f}")
+print(f"Ahorro obtenido: S/ {ahorro:.2f}")
