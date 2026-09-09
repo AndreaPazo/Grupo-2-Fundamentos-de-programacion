@@ -1,0 +1,23 @@
+#Se define la funcion es_par (con return/bool)
+def es_par(num):
+    #Verifico si el residuo al dividir entre 2 es cero
+    return num % 2 == 0
+
+#Se define la funcion mostrar_par (sin return / none)
+def mostrar_par(num):
+    #Llama a la funcion es_par internamente
+    if es_par(num):
+        print(f"El numero ingresado {num} es PAR")
+    else:
+        print(f"El numero ingresado {num} es IMPAR")
+
+#Llama a las funciones y pruebo los datos
+##Datos de prueba
+lista_numeros = [3, 8, 22, 37]
+
+#Resultado de la operacion
+print("****** VERIFICADOR DE PAR O IMPAR ****")
+
+##Iteramos la lista aplicando la función de mostrar a cada num
+for num in lista_numeros:
+    mostrar_par(num)
