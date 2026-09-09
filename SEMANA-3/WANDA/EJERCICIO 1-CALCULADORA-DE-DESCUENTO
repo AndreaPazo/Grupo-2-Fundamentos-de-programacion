@@ -1,0 +1,31 @@
+#se define los parametros precio-porcentaje
+def calcular_descuento(precio, porcentaje):
+    #calcula el precio x porcentaje/100
+    descuento = precio * (porcentaje / 100)
+    
+    #descontamos al precio original
+    precio_final = precio - descuento
+    
+    #retornara precio_final con instruccion return
+    return precio_final
+
+
+#Llama a la funcion y calcular el ahorro
+
+##Datos de prueba
+precio_orig = 323 #esta varble tendra precio base
+porc_desc = 15  #esta varble tendra porcentaje de descuento (15%)
+
+##Llama a la función y guarda el valor retornado en 'precio_pagar'
+precio_pagar = calcular_descuento(precio_orig, porc_desc)
+
+##Calcula el ahorro obtenido
+ahorro = precio_orig - precio_pagar
+
+#Resultado de la operac
+print("****** CALCULADORA DE DESCUENTO *****")
+print(f"Precio original: S/ {precio_orig:.2f}")
+print(f"Descuento aplicado: {porc_desc}%")
+print(f"Precio final a pagar: S/ {precio_pagar:.2f}")
+print(f"El Ahorro obtenido es de : S/ {ahorro:.2f}")
+
