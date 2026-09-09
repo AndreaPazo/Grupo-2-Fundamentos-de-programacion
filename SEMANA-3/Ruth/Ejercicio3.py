@@ -24,3 +24,4 @@ def mostrar_resultado(nombre, notas):
 nombre_estudiante = input("Ingrese el nombre del estudiante: ")
 notas_estudiante = [float(input(f"Ingrese la nota {i+1}: ")) for i in range(5)]
 mostrar_resultado(nombre_estudiante, notas_estudiante)
+
