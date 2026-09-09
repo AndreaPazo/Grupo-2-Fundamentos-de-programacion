@@ -1,0 +1,32 @@
+#Se define la funcion calcular_promedio (con return multiple)
+def calcular_promedio(notas):
+    #Usa funciones built -in para calcular los valores
+    promedio = sum (notas) / len(notas)
+    minima = min (notas)
+    maxima = max (notas)
+    
+    #Retorna los 3 resultdos al mismo time
+    return promedio, minima, maxima
+
+
+#Se define la funcion mostrar_resultado (sin return / void)
+def mostrar_resultado (nombre, notas):
+    #al llamar a la fun y separo rspta en 3 variabls
+    prom, mn, mx = calcular_promedio(notas)
+    
+    #Resultado de la operación
+    print("**** REPORTE DE NOTAS ******")
+    print(f"Estudiante: {nombre} ")
+    print(f"Notas ingresadas: {notas} ")
+    print(f"Promedio final: {prom:.2f} ")
+    print(f"Nota minima: {mn}" )
+    print(f"Nota maxima: {mx}" )
+
+
+#Se llama a las funciones y la prueba los datos
+##Datos de prueba
+nombre_alumno = "Pepito"
+lista_notas = [12, 14, 15, 16.5]
+
+##se imprime los resultados
+mostrar_resultado (nombre_alumno, lista_notas)
