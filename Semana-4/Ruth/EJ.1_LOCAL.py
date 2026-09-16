@@ -1,3 +1,5 @@
+
+ #definicion de la funcion contar_vocales (parametro: texto).
 def contar_vocales(texto):
     vocales = "aeiouAEIOU"
     conteo = 0 # local
