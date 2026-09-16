@@ -1,0 +1,39 @@
+#Ej.1 contar_vocales que reciba un texto como parámetro y devuelva el número total de vocales que contiene (sin importar si son mayúsculas o minúsculas)
+
+def contar_vocales(texto):
+    vocales = "aeiouAEIOU"
+    conteo = 0       # local
+    for letra in texto:
+        if letra in vocales:
+            conteo += 1
+    return conteo
+
+print(contar_vocales("murcielago")) #4
+#Ej.2 celsius_a_fahrenheit que reciba una temperatura en grados Celsius como parámetro y devuelva su equivalente en grados Fahrenheit.
+def celsius_a_fahrenheit(c):
+    factor = 9 / 5 # Variablelocal
+    fahrenheit = c * factor + 32 # Variablelocal
+    return fahrenheit
+
+print(celsius_a_fahrenheit(100)) # imprime:212.0
+print(celsius_a_fahrenheit(0)) # imprime:32.0
+#Ej.3 una lista de números como parámetro y devuelva su promedio numérico, asegurándote de retornar 0 si la lista está vacía para evitar un error de división por cero.
+def promedio(numeros):
+    total = sum(numeros)  # Variable local
+    n = len(numeros)      # Variable local
+    return total / n if n else 0
+
+# Prueba de la función
+print(promedio([10, 20, 30]))  # Imprime: 20.0
+print(promedio([]))            # Imprime: 0 (lista vacía, evita error)
+#Ej.4 Escribe dos funciones independientes en Python (funcion_a y funcion_b) que utilicen una variable local con el mismo nombre (valor) pero asignándole diferentes datos, para demostrar cómo funciona el alcance (scope) local de las variables.
+def funcion_a():
+    valor = 100  # Variable local a funcion_a
+    return valor
+
+def funcion_b():
+    valor = 200  # Variable local a funcion_b (independiente)
+    return valor
+
+# Prueba de las funciones
+print(funcion_a(), funcion_b())  # Imprime: 100 200
