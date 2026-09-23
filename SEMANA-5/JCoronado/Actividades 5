@@ -1,0 +1,50 @@
+# Estadísticas de una Lista de Notas
+# Problema 01: Arreglos y Procesamiento de Datos Lineales
+
+# PASO 1: Crear el arreglo (lista) con las notas
+notas = [15, 18, 12, 9, 17, 14, 20, 11, 16, 13]
+
+# PASO 2: Crear una variable para acumular la suma de las notas
+suma = 0
+
+# PASO 3: Crear una variable para contar los alumnos aprobados
+aprobados = 0
+
+# PASO 4: Inicializar la nota más alta
+# Tomamos como referencia el primer elemento de la lista
+nota_maxima = notas[0]
+
+# PASO 5: Inicializar la nota más baja
+# Tomamos como referencia el primer elemento de la lista
+nota_minima = notas[0]
+
+# PASO 6: Recorrer todas las notas de la lista
+for nota in notas:
+
+    # Acumular cada nota en la variable suma
+    suma = suma + nota
+
+    # Verificar si la nota es mayor que la nota máxima actual
+    if nota > nota_maxima:
+        nota_maxima = nota
+
+    # Verificar si la nota es menor que la nota mínima actual
+    if nota < nota_minima:
+        nota_minima = nota
+
+    # Verificar si el alumno aprobó
+    # Se considera aprobado con nota mayor o igual a 11
+    if nota >= 11:
+        aprobados = aprobados + 1
+
+# PASO 7: Calcular el promedio
+promedio = suma / len(notas)
+
+# PASO 8: Mostrar los resultados
+print("Estadísticas de la Lista de Notas")
+print("----------------------------------")
+print("Notas:", notas)
+print("Promedio:", promedio)
+print("Nota más alta:", nota_maxima)
+print("Nota más baja:", nota_minima)
+print("Cantidad de aprobados:", aprobados)
