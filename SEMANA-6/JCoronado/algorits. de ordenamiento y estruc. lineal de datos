@@ -1,0 +1,48 @@
+# EJERCICIO 1 - ORDENAR NOTAS ESTUDIANTILES
+# Lista de notas
+notas = [85, 42, 93, 67, 28, 75]
+print("Lista original:", notas)
+
+# A) BUBBLE SORT
+bubble = notas.copy()  # copiamos la lista original
+n = len(bubble)
+
+# Recorremos varias veces la lista
+for i in range(n):
+    # Comparar elementos vecinos
+    for j in range(0, n - i - 1):
+
+        # Si el actual es mayor que el siguiente
+        if bubble[j] > bubble[j + 1]:
+
+            # Intercambiamos posiciones
+            bubble[j], bubble[j + 1] = bubble[j + 1], bubble[j]
+print("\nResultado Bubble Sort:")
+print(bubble)
+
+# B) SELECTION SORT
+selection = notas.copy()
+n = len(selection)
+for i in range(n):
+    # Suponemos que el menor es el primero
+    indice_minimo = i
+    # Buscar el menor en el resto de la lista
+    for j in range(i + 1, n):
+        if selection[j] < selectionindice_minimo = j
+    # Intercambio
+    selection[i], selection[indice_minimo] = (
+        selection[indice_minimo],
+        selection[i]
+    )
+print("\nResultado Selection Sort:")
+print(selection)
+
+# C) NOTA MINIMA, MAXIMA Y PROMEDIO
+nota_minima = min(notas)
+nota_maxima = max(notas)
+promedio = sum(notas) / len(notas)
+
+print("\nEstadísticas:")
+print("Nota mínima:", nota_minima)
+print("Nota máxima:", nota_maxima)
+print("Promedio:", promedio)
