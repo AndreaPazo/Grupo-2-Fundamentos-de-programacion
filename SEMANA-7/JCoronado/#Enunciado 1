@@ -1,0 +1,8 @@
+# Pide al usuario que ingrese su nombre desde la consola
+nombre = input("Ingresa tu nombre: ")
+
+# Convierte la cadena ingresada a mayúsculas usando el método .upper()
+nombre_mayusculas = nombre.upper()
+
+# Imprime el mensaje final insertando el nombre convertido a mayúsculas
+print(f"Hola, {nombre_mayusculas}! Bienvenido al curso.")
