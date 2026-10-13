@@ -1,0 +1,33 @@
+# ENUNCIADO 3: BÚSQUEDA SIMPLE EN UNA LISTA DE EMAILS
+print("\n========== ENUNCIADO 3 ==========")
+
+emails = [
+    "ana@gmail.com",
+    "luis@outlook.com",
+    "mia@gmail.com",
+    "juan@yahoo.com"
+]
+
+# Contamos cuántos correos terminan con el dominio gmail.com.
+cantidad_gmail = 0
+for email in emails:
+    # lower() evita problemas si el correo tiene letras mayúsculas.
+    if email.lower().endswith("@gmail.com"):
+        cantidad_gmail += 1
+
+print("1. Cantidad de emails de Gmail:", cantidad_gmail)
+
+# Creamos una lista solo con correos que terminan en .com.
+emails_com = []
+for email in emails:
+    if email.lower().endswith(".com"):
+        emails_com.append(email)
+
+print("2. Emails que terminan en .com:", emails_com)
+
+# in verifica si un elemento está dentro de una lista.
+correo_buscado = "luis@outlook.com"
+if correo_buscado in emails:
+    print("3.", correo_buscado, "sí está en la lista.")
+else:
+    print("3.", correo_buscado, "no está en la lista.")
