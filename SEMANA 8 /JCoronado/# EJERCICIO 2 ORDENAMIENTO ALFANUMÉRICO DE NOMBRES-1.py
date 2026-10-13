@@ -1,0 +1,21 @@
+# ENUNCIADO 2: ORDENAMIENTO ALFANUMÉRICO DE NOMBRES
+print("\n========== ENUNCIADO 2 ==========")
+
+nombres = ["Carlos", "ana", "Beatriz", "david", "Elena"]
+
+# Paso 1: imprimimos la lista original sin cambiarla.
+print("1. Lista original:", nombres)
+
+# Paso 2: sort() ordena la lista original.
+# key=str.lower hace que se compare sin distinguir mayúsculas y minúsculas.
+nombres.sort(key=str.lower)
+print("2. Lista ordenada ascendentemente:", nombres)
+
+# Paso 3: sorted() crea una nueva lista ordenada.
+# reverse=True indica que el orden será descendente.
+nombres_descendentes = sorted(nombres, key=str.lower, reverse=True)
+print("3. Nueva lista en orden descendente:", nombres_descendentes)
+
+# Paso 4: mostramos ambas listas para notar que son independientes.
+print("4. Lista original después de sort():", nombres)
+print("   Lista descendente creada con sorted():", nombres_descendentes)
