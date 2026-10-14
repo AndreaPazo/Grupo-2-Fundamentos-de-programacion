@@ -1,0 +1,71 @@
+EJERCICIO 9: BUSCADOR INTELIGENTE CON REGEX
+Importamos re para realizar busquedas con expresiones regulares.
+import re
+Creamos una lista de diccionarios que representa un catalogo de libros.
+catalogo = [
+{"titulo": "Python para principiantes", "autor": "Ana Torres", "año": 2022},
+{"titulo": "Programacion avanzada", "autor": "Luis Perez", "año": 2020},
+{"titulo": "Aprendiendo Python", "autor": "Carlos Diaz", "año": 2023},
+{"titulo": "Bases de datos", "autor": "Ana Torres", "año": 2019},
+{"titulo": "Python desde cero", "autor": "Maria Lopez", "año": 2021}
+]
+Definimos una funcion que recibe el catalogo y la palabra buscada.
+def buscador(catalogo, query):
+# Creamos una lista vacia para guardar los resultados.
+resultados = []
+
+# Escapamos los caracteres especiales para buscar el texto literalmente.
+# Esto evita que caracteres como . o * se interpreten como patrones.
+patron = re.compile(re.escape(query), re.IGNORECASE)
+
+# Recorremos cada libro del catalogo.
+for libro in catalogo:
+    # Buscamos el texto en el titulo.
+    coincide_titulo = patron.search(libro["titulo"]) is not None
+
+    # Buscamos el texto en el autor.
+    coincide_autor = patron.search(libro["autor"]) is not None
+
+    # Empezamos el puntaje del libro en cero.
+    puntaje = 0
+
+    # Una coincidencia en el titulo suma dos puntos.
+    if coincide_titulo:
+        puntaje += 2
+
+    # Una coincidencia en el autor suma un punto.
+    if coincide_autor:
+        puntaje += 1
+
+    # Solo agregamos libros que tengan alguna coincidencia.
+    if puntaje > 0:
+
+        # Copiamos los datos del libro y añadimos su puntaje.
+        resultado = libro.copy()
+        resultado["puntaje"] = puntaje
+
+        # Guardamos el resultado.
+        resultados.append(resultado)
+# Ordenamos por puntaje descendente y, luego, por año ascendente.
+resultados.sort(
+    key=lambda libro: (-libro["puntaje"], libro["año"])
+)
+
+# Devolvemos los resultados ordenados.
+return resultados
+
+Ejecutamos la busqueda de la palabra "Python".
+
+resultados = buscador(catalogo, "Python")
+
+Mostramos los libros encontrados.
+
+print("RESULTADOS DE LA BUSQUEDA:")
+
+for libro in resultados:
+print(
+"Titulo:", libro["titulo"],
+"| Autor:", libro["autor"],
+"| Año:", libro["año"],
+"| Puntaje:", libro["puntaje"]
+)
