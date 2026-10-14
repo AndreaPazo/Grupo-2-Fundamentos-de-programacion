@@ -1,0 +1,26 @@
+# ENUNCIADO 5: BÚSQUEDA Y FILTRADO DE PRODUCTOS
+# ------------------------------------------------------------
+print("\n========== ENUNCIADO 5 ==========")
+productos = [
+    {"nombre": "Teclado mecánico", "categoria": "Accesorios", "precio": 150.00},
+    {"nombre": "Mouse inalámbrico", "categoria": "Accesorios", "precio": 65.00},
+    {"nombre": "Monitor LED", "categoria": "Pantallas", "precio": 720.00},
+    {"nombre": "Teclado básico", "categoria": "Accesorios", "precio": 45.00},
+    {"nombre": "Laptop", "categoria": "Computadoras", "precio": 2500.00}
+]
+
+def buscar_productos(lista, termino):
+    # Devolvemos productos cuyo nombre contenga el término buscado.
+    resultados = []
+    termino = termino.lower()  # Comparamos sin distinguir mayúsculas.
+    for producto in lista:
+        if termino in producto["nombre"].lower():
+            resultados.append(producto)
+    # Ordenamos los resultados por precio de menor a mayor.
+    resultados.sort(key=lambda producto: producto["precio"])
+    return resultados  # Entregamos la lista filtrada y ordenada.
+
+resultados = buscar_productos(productos, "teclado")
+print('Productos encontrados para "teclado":')
+for producto in resultados:
+    print(f"{producto['nombre']} | {producto['categoria']} | S/ {producto['precio']:.2f}")
