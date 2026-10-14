@@ -1,0 +1,31 @@
+# ejercicio 4: LISTA DE DICCIONARIOS DE ESTUDIANTES
+
+print("\n========== ENUNCIADO 4 ==========")
+
+# Cada diccionario representa a un estudiante.
+# La lista reúne los cuatro registros.
+estudiantes = [
+    {"nombre": "Ana", "carrera": "Ingeniería de Sistemas", "promedio": 17.5},
+    {"nombre": "Luis", "carrera": "Administración", "promedio": 15.8},
+    {"nombre": "Mia", "carrera": "Contabilidad", "promedio": 18.2},
+    {"nombre": "Carlos", "carrera": "Ingeniería Industrial", "promedio": 16.9}
+]
+
+print("NOMBRE Y PROMEDIO DE CADA ESTUDIANTE")
+
+# Recorremos la lista y leemos los campos de cada diccionario.
+for estudiante in estudiantes:
+    print(
+        f"Nombre: {estudiante['nombre']} | "
+        f"Promedio: {estudiante['promedio']}"
+    )
+
+# max() devuelve el estudiante cuyo promedio sea el más alto.
+mejor_estudiante = max(estudiantes, key=lambda estudiante: estudiante["promedio"])
+
+print(
+    "Estudiante con el promedio más alto:",
+    mejor_estudiante["nombre"],
+    "| Promedio:",
+    mejor_estudiante["promedio"]
+)
