@@ -1,0 +1,31 @@
+#REGISTRO DE PRODUCTOS CON ARREGLOS PARALELOS.
+print("\n========== ENUNCIADO 1 ==========")
+
+# Creamos tres listas paralelas.
+# El producto que está en la posición 0 de cada lista corresponde al mismo producto.
+nombres = ["Teclado", "Mouse", "Monitor", "Audífonos"]
+precios = [80.00, 35.50, 650.00, 120.00]
+cantidades = [10, 25, 5, 12]
+
+# Esta variable acumulará el valor total de todo el inventario.
+total_inventario = 0
+print("REPORTE DE INVENTARIO")
+
+# range(len(nombres)) genera las posiciones de los productos.
+for i in range(len(nombres)):
+    # Calculamos el valor de cada producto: precio por cantidad.
+    valor_producto = precios[i] * cantidades[i]
+
+    # Sumamos el valor del producto al total del inventario.
+    total_inventario = total_inventario + valor_producto
+
+    # Mostramos nombre, precio, cantidad y valor total de ese producto.
+    print(
+        f"Producto: {nombres[i]} | "  #el nombre del producto
+        f"Precio: S/ {precios[i]:.2f} | "  #el precio unitario del producto
+        f"Stock: {cantidades[i]} | " #la cantidad de ese producto
+        f"Valor: S/ {valor_producto:.2f}" #el valor total de ese producto
+    )
+
+# Mostramos el valor económico de todo el inventario.
+print(f"Precio total del inventario: S/ {total_inventario:.2f}") #imprime el valor total del inventario
