@@ -1,0 +1,26 @@
+# ENUNCIADO 7: EXTRACCIÓN CON EXPRESIONES REGULARES
+# ------------------------------------------------------------
+print("\n========== ENUNCIADO 7 ==========")
+registros = [
+    "Ana García - edad:25 - tel:987654321",
+    "Luis Pérez - edad:30 - tel:912345678"
+]
+personas = []
+
+# El patrón captura nombre, edad numérica y teléfono numérico.
+patron = r"(.+?)\s*-\s*edad:(\d+)\s*-\s*tel:(\d+)"
+for registro in registros:
+    coincidencia = re.search(patron, registro)
+    if coincidencia:  # Solo procesamos si el texto cumple el patrón.
+        persona = {
+            "nombre": coincidencia.group(1).strip(),  # Primer grupo: nombre.
+            "edad": int(coincidencia.group(2)),        # Segundo grupo: edad.
+            "telefono": coincidencia.group(3)          # Tercer grupo: teléfono.
+        }
+        personas.append(persona)
+    else:
+        print("Registro con formato no reconocido:", registro)
+
+print("Datos extraídos:")
+for persona in personas:
+    print(persona)
