@@ -1,0 +1,114 @@
+# EJERCICIO 10: ANALISIS DE TEXTO Y ESTADISTICAS DE PALABRAS
+# ============================================================
+# Importamos re para buscar palabras mediante expresiones regulares.
+import re
+# PASO 1: DEFINIR EL TEXTO QUE VAMOS A ANALIZAR
+# Creamos un texto de ejemplo.
+# Puedes cambiar este texto por cualquier parrafo que desees analizar.
+texto = """
+Python es un lenguaje de programacion.
+Python es facil de aprender.
+Aprender Python ayuda a resolver problemas.
+La programacion con Python es interesante.
+Python permite crear programas y resolver problemas.
+"""
+# PASO 2: EXTRAER TODAS LAS PALABRAS
+# Explicacion del patron:
+# A-Z y a-z: reconoce letras del alfabeto ingles.
+# ÁÉÍÓÚÜÑ y sus minusculas: reconoce letras con tilde y la ñ.
+# ['’]: permite apostrofes dentro de una palabra.
+# re.findall() devuelve todas las palabras encontradas.
+palabras = re.findall(
+    r"[A-Za-zÁÉÍÓÚÜÑáéíóúüñ]+(?:['’][A-Za-zÁÉÍÓÚÜÑáéíóúüñ]+)*",
+    texto
+)
+
+# Convertimos todas las palabras a minusculas.
+# Asi, "Python", "PYTHON" y "python" se cuentan como una sola palabra.
+palabras = [palabra.lower() for palabra in palabras]
+
+# Mostramos cuantas palabras se extrajeron en total.
+print("========== ANALISIS DEL TEXTO ==========")
+print("Cantidad total de palabras:", len(palabras))
+
+# PASO 3: CONTAR LA FRECUENCIA DE CADA PALABRA
+# Creamos un diccionario vacio.
+# La palabra sera la clave y la cantidad de apariciones sera el valor.
+frecuencias = {}
+
+# Recorremos cada palabra extraida.
+for palabra in palabras:
+
+    # Si la palabra ya existe en el diccionario, sumamos uno.
+    if palabra in frecuencias:
+        frecuencias[palabra] += 1
+
+    # Si la palabra aparece por primera vez, empezamos en uno.
+    else:
+        frecuencias[palabra] = 1
+# PASO 4: ORDENAR POR FRECUENCIA Y ALFABETICAMENTE
+# Convertimos el diccionario en una lista de pares.
+# Cada par contiene una palabra y su frecuencia.
+lista_frecuencias = list(frecuencias.items())
+
+# Ordenamos:
+# - Primero, por frecuencia de mayor a menor.
+# - Si hay empate, por orden alfabetico.
+lista_frecuencias.sort(
+    key=lambda elemento: (-elemento[1], elemento[0])
+)
+
+# Mostramos todas las palabras ordenadas.
+print("\\n========== FRECUENCIA DE PALABRAS ==========")
+
+for palabra, cantidad in lista_frecuencias:
+    print(f"{palabra}: {cantidad} aparicion(es)")
+
+# PASO 5: MOSTRAR LAS CINCO PALABRAS MAS FRECUENTES-
+# [:5] selecciona los primeros cinco elementos de la lista.
+# Si hay menos de cinco palabras distintas, muestra las disponibles.
+top_5 = lista_frecuencias[:5]
+
+print("\\n========== TOP 5 DE PALABRAS ==========")
+
+# enumerate permite mostrar una posicion para cada palabra.
+for posicion, (palabra, cantidad) in enumerate(top_5, start=1):
+    print(f"{posicion}. {palabra}: {cantidad} aparicion(es)")
+
+# PASO 6: ENCONTRAR LAS PALABRAS QUE APARECEN UNA SOLA VEZ
+# Creamos una lista vacia para las palabras unicas.
+palabras_unicas = []
+
+# Recorremos el diccionario de frecuencias.
+for palabra, cantidad in frecuencias.items():
+
+    # Una palabra es unica si aparece exactamente una vez.
+    if cantidad == 1:
+        palabras_unicas.append(palabra)
+
+# Ordenamos alfabeticamente las palabras unicas.
+palabras_unicas.sort()
+
+# Mostramos el resultado.
+print("\\n========== PALABRAS QUE APARECEN UNA SOLA VEZ ==========")
+
+if len(palabras_unicas) > 0:
+
+    # Mostramos cada palabra encontrada.
+    for palabra in palabras_unicas:
+        print(palabra)
+
+else:
+    # Este mensaje aparece si todas las palabras se repiten.
+    print("No hay palabras que aparezcan una sola vez.")
+# PASO 7: MOSTRAR UN RESUMEN FINAL
+# ------------------------------------------------------------
+
+# len(palabras) cuenta todas las apariciones, incluidas las repetidas.
+# len(frecuencias) cuenta cuantas palabras diferentes existen.
+print("\\n========== RESUMEN FINAL ==========")
+print("Total de palabras encontradas:", len(palabras))
+print("Cantidad de palabras diferentes:", len(frecuencias))
+print("Cantidad de palabras que aparecen una sola vez:", len(palabras_unicas))
+
+# Fin del ejercicio 10.
