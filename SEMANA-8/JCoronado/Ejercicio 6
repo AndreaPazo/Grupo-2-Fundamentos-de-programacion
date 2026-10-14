@@ -1,0 +1,24 @@
+# ENUNCIADO 6: COMBINACIÓN DE ARREGLOS Y ORDENAMIENTO
+# ------------------------------------------------------------
+print("\n========== ENUNCIADO 6 ==========")
+productos_ventas = ["Laptop", "Tablet", "Celular", "Monitor", "Teclado"]
+ventas = [25, 40, 35, 18, 50]
+
+# Combinamos las listas paralelas en una lista de diccionarios.
+ranking = []
+for i in range(len(productos_ventas)):
+    ranking.append({"producto": productos_ventas[i], "ventas": ventas[i]})
+
+# Ordenamos por cantidad de ventas, de mayor a menor.
+ranking.sort(key=lambda dato: dato["ventas"], reverse=True)
+print("RANKING DE VENTAS")
+for posicion, dato in enumerate(ranking, start=1):
+    print(f"{posicion}° lugar: {dato['producto']} - {dato['ventas']} ventas")
+
+# Calculamos el promedio de las ventas de todos los productos.
+promedio_ventas = sum(ventas) / len(ventas)
+print(f"Promedio de ventas: {promedio_ventas:.2f}")
+print("Productos sobre la media:")
+for dato in ranking:
+    if dato["ventas"] > promedio_ventas:
+        print(f"- {dato['producto']}: {dato['ventas']} ventas")
