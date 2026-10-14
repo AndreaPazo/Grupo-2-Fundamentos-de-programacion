@@ -1,0 +1,53 @@
+# ENUNCIADO 8: SISTEMA DE CALIFICACIONES CON ESTRUCTURAS COMBINADAS
+# ------------------------------------------------------------
+print("\n========== ENUNCIADO 8 ==========")
+nombres_estudiantes = ["Ana", "Luis", "Mia", "Carlos"]
+
+# Cada lista de notas sigue el mismo orden de nombres_estudiantes.
+notas_por_materia = {
+    "Matemática": [18, 14, 20, 16],
+    "Programación": [19, 17, 18, 15],
+    "Comunicación": [16, 18, 17, 19]
+}
+
+def calcular_promedio_materia(notas):
+    # Evitamos dividir entre cero si la materia no tiene notas.
+    if len(notas) == 0:
+        return 0
+    return sum(notas) / len(notas)  # Suma dividida entre cantidad de notas.
+
+def encontrar_mejor_estudiante(nombres, notas):
+    # Si no hay notas, no existe un mejor estudiante.
+    if len(notas) == 0:
+        return None
+    nota_mayor = max(notas)  # Obtenemos la nota más alta.
+    posicion = notas.index(nota_mayor)  # Encontramos su posición en la lista.
+    return nombres[posicion], nota_mayor
+
+print("PROMEDIO Y MEJOR ESTUDIANTE POR MATERIA")
+for materia, notas in notas_por_materia.items():
+    promedio = calcular_promedio_materia(notas)
+    mejor = encontrar_mejor_estudiante(nombres_estudiantes, notas)
+    print(f"\nMateria: {materia}")
+    print(f"Promedio: {promedio:.2f}")
+    if mejor is not None:
+        print(f"Mejor estudiante: {mejor[0]} | Nota: {mejor[1]}")
+
+# Calculamos el promedio general de cada estudiante en todas las materias.
+promedios_generales = []
+for i in range(len(nombres_estudiantes)):
+    notas_estudiante = []
+    for materia, notas in notas_por_materia.items():
+        notas_estudiante.append(notas[i])  # Nota de esta persona en esta materia.
+    promedio_general = sum(notas_estudiante) / len(notas_estudiante)
+    promedios_generales.append({
+        "nombre": nombres_estudiantes[i],
+        "promedio_general": promedio_general
+    })
+
+# Ordenamos el reporte del promedio general más alto al más bajo.
+promedios_generales.sort(key=lambda estudiante: estudiante["promedio_general"], reverse=True)
+print("\nREPORTE ORDENADO POR PROMEDIO GENERAL")
+for posicion, estudiante in enumerate(promedios_generales, start=1):
+    print(f"{posicion}° lugar: {estudiante['nombre']} | "
+          f"Promedio general: {estudiante['promedio_general']:.2f}")
